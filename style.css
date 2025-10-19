@@ -1,0 +1,50 @@
+body {
+  background-color: #000;
+  color: #00ffff;
+  font-family: 'Courier New', monospace;
+  margin: 0;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+a {
+  color: #00ffff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.terminal {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.menu {
+  border-bottom: 1px solid #00ffff;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.menu a {
+  margin-right: 12px;
+}
+
+.glitch {
+  animation: glitch 1s infinite;
+}
+
+@keyframes glitch {
+  0% { text-shadow: 2px 0 #0ff; }
+  50% { text-shadow: -2px 0 #0ff; }
+  100% { text-shadow: 2px 0 #0ff; }
+}
+
+.typing {
+  border-right: 2px solid #00ffff;
+  white-space: pre-line;
+  overflow: hidden;
+}
