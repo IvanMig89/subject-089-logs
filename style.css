@@ -1,0 +1,65 @@
+
+body {
+    background-color: #000;
+    color: #00ffff;
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    overflow: hidden;
+}
+
+header nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+header nav a {
+    color: #00ffff;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+header nav a:hover {
+    color: #ffffff;
+}
+
+main {
+    text-align: center;
+    margin-top: 10vh;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+#boot-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #00ffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.glitch {
+    animation: glitch 0.2s infinite;
+}
+
+@keyframes glitch {
+    0% { text-shadow: 2px 0 red; }
+    20% { text-shadow: -2px 0 blue; }
+    40% { text-shadow: 2px 0 green; }
+    60% { text-shadow: -2px 0 cyan; }
+    80% { text-shadow: 2px 0 magenta; }
+    100% { text-shadow: 2px 0 red; }
+}
