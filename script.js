@@ -1,30 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const bootText = document.getElementById("boot-text");
   const bootScreen = document.getElementById("boot-screen");
+  const bootText = document.getElementById("boot-text");
   const terminal = document.getElementById("terminal");
 
-  const lines = [
+  const bootLines = [
     "> INIZIALIZZAZIONE SISTEMA...",
     "> VERIFICA MEMORIA...",
     "> ACCESSO AUTORIZZATO: SUBJECT-089",
     "> CARICAMENTO DATI..."
   ];
 
-  let index = 0;
+  let lineIndex = 0;
 
-  function typeLine() {
-    if (index < lines.length) {
-      bootText.textContent += lines[index] + "\n";
-      index++;
-      setTimeout(typeLine, 1000);
+  function showNextLine() {
+    if (lineIndex < bootLines.length) {
+      bootText.textContent += bootLines[lineIndex] + "\n";
+      lineIndex++;
+      setTimeout(showNextLine, 1000);
     } else {
-      // Dopo l'ultima riga, passa al terminale
       setTimeout(() => {
         bootScreen.classList.add("hidden");
         terminal.classList.remove("hidden");
-      }, 1500);
+      }, 1000);
     }
   }
 
-  typeLine();
+  showNextLine();
 });
