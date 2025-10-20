@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>SUBJECT-089_LOGS — Terminale</title>
+<title>SUBJECT-089_LOGS</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,41 +14,58 @@
 <div class="title">SUBJECT-089_LOGS</div>
 <div class="subtitle">Archivio recuperato — accesso riservato</div>
 </div>
-<div style="margin-left:auto;font-size:12px;color:rgba(0,216,255,0.35)">v1.0 - cinematic build</div>
+<div class="header-right">
+<div class="build">v1.0 - cinematic</div>
+<button id="audio-toggle" class="audio-toggle" aria-label="Attiva audio">▶</button>
+</div>
 </header>
 
 
+
+
 <main class="terminal" id="terminal">
-<div id="boot"></div>
+<div id="boot" class="boot"></div>
+
+
 
 
 <nav class="menu" id="menu" style="display:none">
-<button data-target="index" class="active">Terminale</button>
-<button data-target="missioni">Missioni</button>
-<button data-target="personaggi">Personaggi</button>
-<button data-target="documenti">Documenti</button>
-<button data-target="archivio">Archivio</button>
-<button data-target="logs">Logs</button>
+<a href="index.html" class="active">TERMINALE</a>
+<a href="missioni.html">MISSIONI</a>
+<a href="personaggi.html">PERSONAGGI</a>
+<a href="documenti.html">DOCUMENTI</a>
+<a href="archivio.html">ARCHIVIO</a>
+<a href="logs.html">LOGS</a>
 </nav>
 
 
+
+
 <section id="index" class="page active">
-<div class="line"><span class="glitch" data-text="> ACCESSO SISTEMA...">&gt; ACCESSO SISTEMA...</span></div>
+<div class="line glitch" data-text="> ACCESSO SISTEMA..."></div>
 <div class="line muted">&gt; RECUPERO LOG MEMORIA...</div>
 <div class="line muted">&gt; WARDEN: CONTROLLO NON AUTORIZZATO</div>
-<div class="line">&gt; MENU: [MISSIONI] [PERSONAGGI] [DOCUMENTI] [ARCHIVIO] [LOGS]</div>
+<div class="line">&gt; LOG DISPONIBILI: [MISSIONI] [PERSONAGGI] [DOCUMENTI] [ARCHIVIO] [LOGS]</div>
 
 
-<div style="margin-top:14px">
-<input id="command" placeholder="> inserisci comando..." style="width:100%;padding:10px;border-radius:6px;border:1px solid rgba(0,216,255,0.06);background:transparent;color:var(--cyan);font-family:var(--mono);outline:none">
+
+
+<div class="prompt">
+<input id="command" autocomplete="off" placeholder="> inserisci comando..." />
 </div>
 
 
-<div id="console-out" style="margin-top:12px"></div>
+
+
+<div id="console-out" class="console-out"></div>
 </section>
 
 
+
+
 </main>
+
+
 
 
 <footer>
@@ -56,6 +73,15 @@
 <div class="muted">Suggerimento: digita "open missioni" o usa il menu.</div>
 </footer>
 </div>
+
+
+
+
+<!-- AUDIO (in cartella audio/) -->
+<audio id="ambient-audio" src="audio/ambient.mp3" loop preload="auto"></audio>
+<audio id="type-audio" src="audio/type.mp3" preload="auto"></audio>
+
+
 
 
 <script src="script.js"></script>
