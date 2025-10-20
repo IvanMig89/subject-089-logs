@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>SUBJECT-089_LOGS — Documenti</title>
+<title>DOCUMENTI — SUBJECT-089_LOGS</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,33 +14,36 @@
 <div class="title">DOCUMENTI — SUBJECT-089_LOGS</div>
 <div class="subtitle">Rapporti, note tecniche e analisi</div>
 </div>
-<div style="margin-left:auto;font-size:12px;color:rgba(0,216,255,0.35)">v1.0</div>
+<div class="header-right">
+<div class="build">v1.0</div>
+<button id="audio-toggle-4" class="audio-toggle" aria-label="Attiva audio">▶</button>
+</div>
 </header>
 
 
 <main class="terminal">
 <nav class="menu">
-<button data-href="index.html">Terminale</button>
-<button data-href="missioni.html">Missioni</button>
-<button data-href="personaggi.html">Personaggi</button>
-<button data-href="documenti.html" class="active">Documenti</button>
-<button data-href="archivio.html">Archivio</button>
-<button data-href="logs.html">Logs</button>
+<a href="index.html">TERMINALE</a>
+<a href="missioni.html">MISSIONI</a>
+<a href="personaggi.html">PERSONAGGI</a>
+<a href="documenti.html" class="active">DOCUMENTI</a>
+<a href="archivio.html">ARCHIVIO</a>
+<a href="logs.html">LOGS</a>
 </nav>
 
 
-<section style="margin-top:12px">
+<section class="page-content">
 <div class="card">
 <h3>Report: Settore Biologico</h3>
 <div class="meta">Fonte: Terminale 12B</div>
-<p style="margin-top:8px">Estratto: Campioni immagazzinati senza registrazione completa. Protocollo 7 applicato.</p>
+<p>Estratto: Campioni immagazzinati senza registrazione completa. Protocollo 7 applicato.</p>
 </div>
 
 
 <div class="card">
 <h3>Analisi hardware</h3>
 <div class="meta">Fonte: Warden Internal</div>
-<p style="margin-top:8px">Estratto: Presenza di impianti metallici non identifcati in alcuni specimen.</p>
+<p>Estratto: Presenza di impianti metallici non identificati in alcuni specimen.</p>
 </div>
 
 
@@ -51,10 +54,14 @@
 
 
 <footer>
-<div><a href="index.html" style="color:var(--cyan);text-decoration:underline">← Torna al terminale</a></div>
+<div><a href="index.html">← Torna al terminale</a></div>
 <div class="muted">Documenti atti a fornire contesto tecnico.</div>
 </footer>
 </div>
+
+
+<audio id="ambient-audio-4" src="audio/ambient.mp3" loop preload="auto"></audio>
+<audio id="type-audio-4" src="audio/type.mp3" preload="auto"></audio>
 <script src="script.js"></script>
 </body>
 </html>
