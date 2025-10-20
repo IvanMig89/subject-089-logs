@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>SUBJECT-089_LOGS — Missioni</title>
+<title>MISSIONI — SUBJECT-089_LOGS</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,37 +14,40 @@
 <div class="title">MISSIONI — SUBJECT-089_LOGS</div>
 <div class="subtitle">Rundown e resoconti</div>
 </div>
-<div style="margin-left:auto;font-size:12px;color:rgba(0,216,255,0.35)">v1.0</div>
+<div class="header-right">
+<div class="build">v1.0</div>
+<button id="audio-toggle-2" class="audio-toggle" aria-label="Attiva audio">▶</button>
+</div>
 </header>
 
 
 <main class="terminal">
 <nav class="menu">
-<button data-href="index.html">Terminale</button>
-<button data-href="missioni.html" class="active">Missioni</button>
-<button data-href="personaggi.html">Personaggi</button>
-<button data-href="documenti.html">Documenti</button>
-<button data-href="archivio.html">Archivio</button>
-<button data-href="logs.html">Logs</button>
+<a href="index.html">TERMINALE</a>
+<a href="missioni.html" class="active">MISSIONI</a>
+<a href="personaggi.html">PERSONAGGI</a>
+<a href="documenti.html">DOCUMENTI</a>
+<a href="archivio.html">ARCHIVIO</a>
+<a href="logs.html">LOGS</a>
 </nav>
 
 
-<section style="margin-top:12px">
+<section class="page-content">
 <div class="card">
 <h3>Rundown 01 — A1: La Discesa</h3>
 <div class="meta">Codice: RUNDOWN-01 · Data recupero: 2037-04-12</div>
-<div class="thumb" style="margin-top:8px">Screenshot placeholder</div>
-<p style="margin-top:8px">Estratto: Siamo scesi nel livello A1. L'aria era ferma, corridoi metallici e luci intermittenti. Terminali indicavano esperimenti.</p>
-<div style="margin-top:8px;color:rgba(0,216,255,0.5)">Log trovati in missione: <a href="logs.html#log_034" style="color:var(--cyan);text-decoration:underline">LOG_034</a>, <a href="logs.html#log_035" style="color:var(--cyan);text-decoration:underline">LOG_035</a></div>
+<div class="thumb">Screenshot placeholder</div>
+<p>Estratto: Siamo scesi nel livello A1. L'aria era ferma, corridoi metallici e luci intermittenti. Terminali indicavano esperimenti su campioni.</p>
+<div class="meta">Log trovati: <a href="logs.html#log_034">LOG_034</a>, <a href="logs.html#log_035">LOG_035</a></div>
 </div>
 
 
 <div class="card">
 <h3>Rundown 02 — B2: Condotto 7</h3>
 <div class="meta">Codice: RUNDOWN-02 · Data recupero: 2037-04-29</div>
-<div class="thumb" style="margin-top:8px">Screenshot placeholder</div>
-<p style="margin-top:8px">Estratto: Passaggi SIGILLATI, presenza di supporti biologici. Segni di esperimenti chirurgici.</p>
-<div style="margin-top:8px;color:rgba(0,216,255,0.5)">Log trovati in missione: <a href="logs.html#log_029" style="color:var(--cyan);text-decoration:underline">LOG_029</a></div>
+<div class="thumb">Screenshot placeholder</div>
+<p>Estratto: Passaggi sigillati, presenza di supporti biologici. Segni di esperimenti chirurgici.</p>
+<div class="meta">Log trovati: <a href="logs.html#log_029">LOG_029</a></div>
 </div>
 
 
@@ -55,10 +58,14 @@
 
 
 <footer>
-<div><a href="index.html" style="color:var(--cyan);text-decoration:underline">← Torna al terminale</a></div>
+<div><a href="index.html">← Torna al terminale</a></div>
 <div class="muted">Ogni log rimanda alla pagina Logs.</div>
 </footer>
 </div>
+
+
+<audio id="ambient-audio-2" src="audio/ambient.mp3" loop preload="auto"></audio>
+<audio id="type-audio-2" src="audio/type.mp3" preload="auto"></audio>
 <script src="script.js"></script>
 </body>
 </html>
