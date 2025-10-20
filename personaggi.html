@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>SUBJECT-089_LOGS — Personaggi</title>
+<title>PERSONAGGI — SUBJECT-089_LOGS</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,36 +14,37 @@
 <div class="title">PERSONAGGI — SUBJECT-089_LOGS</div>
 <div class="subtitle">Profili dei prigionieri e membri del team</div>
 </div>
-<div style="margin-left:auto;font-size:12px;color:rgba(0,216,255,0.35)">v1.0</div>
+<div class="header-right">
+<div class="build">v1.0</div>
+<button id="audio-toggle-3" class="audio-toggle" aria-label="Attiva audio">▶</button>
+</div>
 </header>
 
 
 <main class="terminal">
 <nav class="menu">
-<button data-href="index.html">Terminale</button>
-<button data-href="missioni.html">Missioni</button>
-<button data-href="personaggi.html" class="active">Personaggi</button>
-<button data-href="documenti.html">Documenti</button>
-<button data-href="archivio.html">Archivio</button>
-<button data-href="logs.html">Logs</button>
+<a href="index.html">TERMINALE</a>
+<a href="missioni.html">MISSIONI</a>
+<a href="personaggi.html" class="active">PERSONAGGI</a>
+<a href="documenti.html">DOCUMENTI</a>
+<a href="archivio.html">ARCHIVIO</a>
+<a href="logs.html">LOGS</a>
 </nav>
 
 
-<section style="margin-top:12px">
+<section class="page-content">
 <div class="card">
 <h3>PRISONER_089</h3>
-<div class="meta">Ruolo: Soggetto recuperato · Stato: attivo</div>
-<p style="margin-top:8px">Voce narrativa: il prigioniero-autore del diario. Inserire qui frammenti narrativi che colleghino i rundown.</p>
+<div class="meta">Ruolo: Soggetto di recupero · Stato: attivo</div>
+<p>Voce narrativa: il prigioniero-autore del diario. Inserire qui frammenti narrativi che colleghino i rundown.</p>
 </div>
 
 
 <div class="card">
 <h3>Nemesi (NPC)</h3>
 <div class="meta">Ruolo: Agente operativo</div>
-<p style="margin-top:8px">Breve nota: NPC introdotto come figura ricorrente nelle annotazioni di missione.</p>
+<p>Breve nota: figura ricorrente nelle annotazioni.</p>
 </div>
-
-
 </section>
 
 
@@ -51,10 +52,14 @@
 
 
 <footer>
-<div><a href="index.html" style="color:var(--cyan);text-decoration:underline">← Torna al terminale</a></div>
+<div><a href="index.html">← Torna al terminale</a></div>
 <div class="muted">Profili brevi per mantenere immersione.</div>
 </footer>
 </div>
+
+
+<audio id="ambient-audio-3" src="audio/ambient.mp3" loop preload="auto"></audio>
+<audio id="type-audio-3" src="audio/type.mp3" preload="auto"></audio>
 <script src="script.js"></script>
 </body>
 </html>
