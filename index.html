@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SUBJECT-089_LOGS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <audio id="bg-audio" src="static.mp3" loop autoplay></audio>
+
+  <div id="boot-screen" class="boot-screen">
+    <pre id="boot-text"></pre>
+  </div>
+
+  <div class="wrap hidden" role="main">
+    <header>
+      <div class="logo">089</div>
+      <div>
+        <div class="title">SUBJECT-089_LOGS</div>
+        <div class="subtitle">Archivio recuperato — accesso riservato</div>
+      </div>
+      <div style="margin-left:auto;font-size:12px;color:rgba(0,216,255,0.35)">v1.0 - build cinematic</div>
+    </header>
+
+    <main class="terminal" id="terminal">
+      <nav class="menu" id="menu">
+        <button data-target="home" class="active">Terminale</button>
+        <button data-target="missioni">Missioni</button>
+        <button data-target="creature">Creature</button>
+        <button data-target="appunti">Appunti</button>
+      </nav>
+
+      <section id="home" class="page active">
+        <div class="line"><span class="glitch" data-text="> ACCESSO SISTEMA...">&gt; ACCESSO SISTEMA...</span></div>
+        <div class="line muted">&gt; RECUPERO LOG MEMORIA...</div>
+        <div class="line muted">&gt; WARDEN: CONTROLLO NON AUTORIZZATO</div>
+        <div class="line">&gt; LOG DISPONIBILI: [MISSIONI] [CREATURE] [APPUNTI]</div>
+        <div class="line" style="margin-top:12px">&gt; DIGITA O USA IL MENU PER NAVIGARE. (ES. "open missioni")</div>
+        <div style="margin-top:14px">
+          <input id="command" placeholder="> inserisci comando..." style="width:100%;padding:10px;border-radius:6px;border:1px solid rgba(0,216,255,0.06);background:transparent;color:var(--cyan);font-family:var(--mono);outline:none">
+        </div>
+        <div id="console-out" style="margin-top:12px"></div>
+      </section>
+    </main>
+
+    <footer>
+      <div>SUBJECT-089_LOGS — archivio temporaneo</div>
+      <div class="muted">Suggerimento: usa il campo comandi per aprire pagine (es. "open missioni")</div>
+    </footer>
+  </div>
+
+  <script src="boot.js"></script>
+</body>
+</html>
