@@ -1,56 +1,243 @@
 <!doctype html>
 <html lang="it">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SUBJECT-089_LOGS</title>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SUBJECT-089_LOGS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#000000;
+  --cyan:#00d8ff;
+  --muted:rgba(0,216,255,0.08);
+  --glass:rgba(0,10,15,0.6);
+  --mono:'Share Tech Mono', monospace;
+  --headline:'Orbitron', sans-serif;
+}
+
+html,body{height:100%;}
+
+body{
+  margin:0;
+  background:radial-gradient(ellipse at center,#001219 0%,#000000 60%);
+  color:var(--cyan);
+  font-family:var(--mono);
+  overflow:hidden;
+}
+
+/* scanlines */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size:100% 3px;
+  mix-blend-mode:overlay;
+}
+
+.wrap{
+  max-width:1100px;
+  margin:28px auto;
+  height:calc(100% - 56px);
+  padding:18px;
+  border:1px solid rgba(0,216,255,0.08);
+  background:linear-gradient(180deg, rgba(0,10,15,0.6), rgba(0,0,0,0.4));
+  box-shadow:0 10px 40px rgba(0,0,0,0.8);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:6px 10px;
+  border-bottom:1px solid rgba(0,216,255,0.04);
+}
+
+.logo{
+  width:56px;
+  height:56px;
+  border:2px solid var(--cyan);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:6px;
+  font-family:var(--headline);
+  font-weight:700;
+}
+
+.title{font-size:16px;}
+.subtitle{font-size:12px;color:rgba(0,216,255,0.6);}
+
+.terminal{
+  flex:1;
+  padding:18px;
+  overflow:auto;
+  border-radius:6px;
+  background:linear-gradient(180deg, rgba(0,6,10,0.6), rgba(0,0,0,0.2));
+}
+
+.line{
+  white-space:pre-wrap;
+  font-size:15px;
+  line-height:1.4;
+}
+
+.muted{color:rgba(0,216,255,0.5);}
+
+.menu{
+  display:flex;
+  gap:12px;
+  margin-top:10px;
+}
+
+.menu button{
+  background:transparent;
+  border:1px solid rgba(0,216,255,0.06);
+  color:var(--cyan);
+  padding:8px 14px;
+  border-radius:6px;
+  font-family:var(--mono);
+  cursor:pointer;
+}
+
+.menu button.active{
+  background:rgba(0,216,255,0.08);
+}
+
+.page{display:none;}
+.page.active{display:block;}
+
+input{
+  width:100%;
+  margin-top:12px;
+  padding:10px;
+  border-radius:6px;
+  border:1px solid rgba(0,216,255,0.06);
+  background:transparent;
+  color:var(--cyan);
+  font-family:var(--mono);
+  outline:none;
+}
+
+/* glitch */
+.glitch{
+  position:relative;
+}
+.glitch::before,
+.glitch::after{
+  content:attr(data-text);
+  position:absolute;
+  left:0;
+  top:0;
+  opacity:0.8;
+}
+.glitch::before{
+  transform:translate(-2px,-1px);
+  color:var(--cyan);
+}
+.glitch::after{
+  transform:translate(2px,1px);
+  color:rgba(0,216,255,0.6);
+}
+
+footer{
+  font-size:12px;
+  color:rgba(0,216,255,0.45);
+  padding:6px 10px;
+  border-top:1px solid rgba(0,216,255,0.02);
+}
+</style>
 </head>
+
 <body>
-  <audio id="bg-audio" src="static.mp3" loop autoplay></audio>
+<div class="wrap">
 
-  <div id="boot-screen" class="boot-screen">
-    <pre id="boot-text"></pre>
+<header>
+  <div class="logo">089</div>
+  <div>
+    <div class="title">SUBJECT-089_LOGS</div>
+    <div class="subtitle">Archivio recuperato — accesso riservato</div>
   </div>
+</header>
 
-  <div class="wrap hidden" role="main">
-    <header>
-      <div class="logo">089</div>
-      <div>
-        <div class="title">SUBJECT-089_LOGS</div>
-        <div class="subtitle">Archivio recuperato — accesso riservato</div>
-      </div>
-      <div style="margin-left:auto;font-size:12px;color:rgba(0,216,255,0.35)">v1.0 - build cinematic</div>
-    </header>
+<main class="terminal">
 
-    <main class="terminal" id="terminal">
-      <nav class="menu" id="menu">
-        <button data-target="home" class="active">Terminale</button>
-        <button data-target="missioni">Missioni</button>
-        <button data-target="creature">Creature</button>
-        <button data-target="appunti">Appunti</button>
-      </nav>
+<nav class="menu">
+  <button class="active" data-target="home">Terminale</button>
+  <button data-target="missioni">Missioni</button>
+  <button data-target="creature">Creature</button>
+  <button data-target="appunti">Appunti</button>
+</nav>
 
-      <section id="home" class="page active">
-        <div class="line"><span class="glitch" data-text="> ACCESSO SISTEMA...">&gt; ACCESSO SISTEMA...</span></div>
-        <div class="line muted">&gt; RECUPERO LOG MEMORIA...</div>
-        <div class="line muted">&gt; WARDEN: CONTROLLO NON AUTORIZZATO</div>
-        <div class="line">&gt; LOG DISPONIBILI: [MISSIONI] [CREATURE] [APPUNTI]</div>
-        <div class="line" style="margin-top:12px">&gt; DIGITA O USA IL MENU PER NAVIGARE. (ES. "open missioni")</div>
-        <div style="margin-top:14px">
-          <input id="command" placeholder="> inserisci comando..." style="width:100%;padding:10px;border-radius:6px;border:1px solid rgba(0,216,255,0.06);background:transparent;color:var(--cyan);font-family:var(--mono);outline:none">
-        </div>
-        <div id="console-out" style="margin-top:12px"></div>
-      </section>
-    </main>
-
-    <footer>
-      <div>SUBJECT-089_LOGS — archivio temporaneo</div>
-      <div class="muted">Suggerimento: usa il campo comandi per aprire pagine (es. "open missioni")</div>
-    </footer>
+<section id="home" class="page active">
+  <div class="line glitch" data-text="> ACCESSO AUTORIZZATO: SUBJECT-089">
+    &gt; ACCESSO AUTORIZZATO: SUBJECT-089
   </div>
+  <div class="line muted">&gt; LOG DISPONIBILI</div>
 
-  <script src="boot.js"></script>
+  <input id="command" placeholder="> open missioni">
+  <div id="console"></div>
+</section>
+
+<section id="missioni" class="page">
+  <div class="line">&gt; Nessuna missione caricata</div>
+</section>
+
+<section id="creature" class="page">
+  <div class="line">&gt; Nessuna creatura catalogata</div>
+</section>
+
+<section id="appunti" class="page">
+  <div class="line">&gt; Appunti vuoti</div>
+</section>
+
+</main>
+
+<footer>
+  SUBJECT-089_LOGS — archivio temporaneo
+</footer>
+
+</div>
+
+<script>
+const buttons=document.querySelectorAll(".menu button");
+const pages=document.querySelectorAll(".page");
+
+buttons.forEach(b=>{
+  b.onclick=()=>{
+    buttons.forEach(x=>x.classList.remove("active"));
+    pages.forEach(p=>p.classList.remove("active"));
+    b.classList.add("active");
+    document.getElementById(b.dataset.target).classList.add("active");
+  };
+});
+
+const cmd=document.getElementById("command");
+const consoleBox=document.getElementById("console");
+
+cmd.addEventListener("keydown",e=>{
+  if(e.key==="Enter"){
+    const v=cmd.value.toLowerCase().trim();
+    cmd.value="";
+    const l=document.createElement("div");
+    l.className="line";
+    l.textContent="> "+v;
+    consoleBox.appendChild(l);
+
+    if(v.startsWith("open ")){
+      const t=v.split(" ")[1];
+      const btn=[...buttons].find(b=>b.dataset.target===t);
+      if(btn) btn.click();
+    }
+  }
+});
+</script>
+
 </body>
 </html>
