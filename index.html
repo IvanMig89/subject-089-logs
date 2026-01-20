@@ -9,26 +9,47 @@
 
 <style>
 :root{
-  --bg:#000000;
+  --bg:#000;
   --cyan:#00d8ff;
-  --muted:rgba(0,216,255,0.08);
-  --glass:rgba(0,10,15,0.6);
   --mono:'Share Tech Mono', monospace;
   --headline:'Orbitron', sans-serif;
 }
 
-html,body{height:100%;}
+html,body{height:100%;margin:0;}
 
 body{
-  margin:0;
-  background:radial-gradient(ellipse at center,#001219 0%,#000000 60%);
+  background:black;
   color:var(--cyan);
   font-family:var(--mono);
   overflow:hidden;
 }
 
+/* ===== BOOT ===== */
+#boot{
+  position:fixed;
+  inset:0;
+  background:black;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+
+#boot-text{
+  white-space:pre;
+  font-size:15px;
+}
+
+/* ===== MAIN LAYOUT (IDENTICO) ===== */
+
+body.loaded #boot{display:none;}
+
+body.loaded{
+  background:radial-gradient(ellipse at center,#001219 0%,#000 60%);
+}
+
 /* scanlines */
-body::after{
+body.loaded::after{
   content:"";
   position:fixed;
   inset:0;
@@ -46,10 +67,12 @@ body::after{
   border:1px solid rgba(0,216,255,0.08);
   background:linear-gradient(180deg, rgba(0,10,15,0.6), rgba(0,0,0,0.4));
   box-shadow:0 10px 40px rgba(0,0,0,0.8);
-  display:flex;
+  display:none;
   flex-direction:column;
   gap:12px;
 }
+
+body.loaded .wrap{display:flex;}
 
 header{
   display:flex;
@@ -71,7 +94,6 @@ header{
   font-weight:700;
 }
 
-.title{font-size:16px;}
 .subtitle{font-size:12px;color:rgba(0,216,255,0.6);}
 
 .terminal{
@@ -82,13 +104,7 @@ header{
   background:linear-gradient(180deg, rgba(0,6,10,0.6), rgba(0,0,0,0.2));
 }
 
-.line{
-  white-space:pre-wrap;
-  font-size:15px;
-  line-height:1.4;
-}
-
-.muted{color:rgba(0,216,255,0.5);}
+.line{white-space:pre-wrap;font-size:15px;}
 
 .menu{
   display:flex;
@@ -106,9 +122,7 @@ header{
   cursor:pointer;
 }
 
-.menu button.active{
-  background:rgba(0,216,255,0.08);
-}
+.menu button.active{background:rgba(0,216,255,0.08);}
 
 .page{display:none;}
 .page.active{display:block;}
@@ -122,28 +136,6 @@ input{
   background:transparent;
   color:var(--cyan);
   font-family:var(--mono);
-  outline:none;
-}
-
-/* glitch */
-.glitch{
-  position:relative;
-}
-.glitch::before,
-.glitch::after{
-  content:attr(data-text);
-  position:absolute;
-  left:0;
-  top:0;
-  opacity:0.8;
-}
-.glitch::before{
-  transform:translate(-2px,-1px);
-  color:var(--cyan);
-}
-.glitch::after{
-  transform:translate(2px,1px);
-  color:rgba(0,216,255,0.6);
 }
 
 footer{
@@ -156,18 +148,23 @@ footer{
 </head>
 
 <body>
-<div class="wrap">
 
+<!-- BOOT -->
+<div id="boot">
+  <div id="boot-text"></div>
+</div>
+
+<!-- MAIN -->
+<div class="wrap">
 <header>
   <div class="logo">089</div>
   <div>
-    <div class="title">SUBJECT-089_LOGS</div>
+    <div>SUBJECT-089_LOGS</div>
     <div class="subtitle">Archivio recuperato — accesso riservato</div>
   </div>
 </header>
 
 <main class="terminal">
-
 <nav class="menu">
   <button class="active" data-target="home">Terminale</button>
   <button data-target="missioni">Missioni</button>
@@ -176,39 +173,44 @@ footer{
 </nav>
 
 <section id="home" class="page active">
-  <div class="line glitch" data-text="> ACCESSO AUTORIZZATO: SUBJECT-089">
-    &gt; ACCESSO AUTORIZZATO: SUBJECT-089
-  </div>
-  <div class="line muted">&gt; LOG DISPONIBILI</div>
-
+  <div class="line">&gt; ACCESSO AUTORIZZATO: SUBJECT-089</div>
   <input id="command" placeholder="> open missioni">
   <div id="console"></div>
 </section>
 
-<section id="missioni" class="page">
-  <div class="line">&gt; Nessuna missione caricata</div>
-</section>
-
-<section id="creature" class="page">
-  <div class="line">&gt; Nessuna creatura catalogata</div>
-</section>
-
-<section id="appunti" class="page">
-  <div class="line">&gt; Appunti vuoti</div>
-</section>
-
+<section id="missioni" class="page"><div class="line">&gt; Vuoto</div></section>
+<section id="creature" class="page"><div class="line">&gt; Vuoto</div></section>
+<section id="appunti" class="page"><div class="line">&gt; Vuoto</div></section>
 </main>
 
-<footer>
-  SUBJECT-089_LOGS — archivio temporaneo
-</footer>
-
+<footer>SUBJECT-089_LOGS — archivio temporaneo</footer>
 </div>
 
 <script>
+/* BOOT */
+const bootLines=[
+  "> ACCESSO AUTORIZZATO: SUBJECT-089",
+  "> RECUPERO ARCHIVIO...",
+  "> INIZIALIZZAZIONE INTERFACCIA..."
+];
+
+let i=0;
+const bootText=document.getElementById("boot-text");
+
+function typeBoot(){
+  if(i<bootLines.length){
+    bootText.textContent+=bootLines[i]+"\n";
+    i++;
+    setTimeout(typeBoot,700);
+  }else{
+    setTimeout(()=>document.body.classList.add("loaded"),1500);
+  }
+}
+typeBoot();
+
+/* NAV */
 const buttons=document.querySelectorAll(".menu button");
 const pages=document.querySelectorAll(".page");
-
 buttons.forEach(b=>{
   b.onclick=()=>{
     buttons.forEach(x=>x.classList.remove("active"));
@@ -218,18 +220,12 @@ buttons.forEach(b=>{
   };
 });
 
+/* COMMAND */
 const cmd=document.getElementById("command");
-const consoleBox=document.getElementById("console");
-
 cmd.addEventListener("keydown",e=>{
   if(e.key==="Enter"){
     const v=cmd.value.toLowerCase().trim();
     cmd.value="";
-    const l=document.createElement("div");
-    l.className="line";
-    l.textContent="> "+v;
-    consoleBox.appendChild(l);
-
     if(v.startsWith("open ")){
       const t=v.split(" ")[1];
       const btn=[...buttons].find(b=>b.dataset.target===t);
